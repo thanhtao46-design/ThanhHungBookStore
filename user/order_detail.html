@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Tiết Đơn Hàng</title>
+    <link rel="stylesheet" href="../css/user.css" />
+    <style>
+  /* ✅ Căn phải cột Đơn giá và Tổng tiền */
+  .table th:nth-child(4),
+  .table td:nth-child(4),
+  .table th:nth-child(5),
+  .table td:nth-child(5) {
+    text-align: right;
+  }
+</style>
+
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="home_loggedin.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="home_loggedin.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="home_loggedin.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="home_loggedin.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="home_loggedin.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="search.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Thanh Cao ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="location='userinfo.html'">
+                Chi tiết
+              </button>
+              <button class="btn btn--light" onclick="location='../index.html'">
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+          <button id="cart-btn" class="dropbtn" onclick="location='cart.html'">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <form class="form">
+        <h2 style="text-align: center;">Chi Tiết Đơn Hàng</h2>
+
+        <p><b>Mã đơn hàng:</b> O001</p>
+        <p><b>Khách hàng:</b> Cao Thai Phuong Thanh</p>
+        <p><b>Email:</b> thanhcao@gmail.com</p>
+        <p><b>Số điện thoại:</b> 0909 022 966</p>
+        <p><b>Trạng thái:</b> <span class="badge">Đã giao</span></p>
+        <p>
+          <b>Địa chỉ giao hàng:</b> 273 An Duong Vuong, phuong Cho Quan, TP.Ho Chi Minh
+        </p>
+        <p><b>Ngày giao:</b> 2025-01-25</p>
+        
+
+        <table class="table">
+  <tr>
+    <th>Mã sản phẩm</th>
+    <th>Tên </th>
+    <th>Số lượng</th>
+    <th>Đơn giá</th>
+    <th>Tổng tiền</th>
+  </tr>
+  <tr>
+    <td>P001</td>
+    <td>Arya bàn bên</td>
+    <td>1</td>
+    <td>₫110,000</td>
+    <td>₫110,000</td>
+  </tr>
+  <tr>
+    <td>P002</td>
+    <td>Thiên sứ nhà bên</td>
+    <td>1</td>
+    <td>₫85,000</td>
+    <td>₫85,000</td>
+  </tr>
+  <tr>
+    <td>P003</td>
+    <td>Tuổi Trẻ Đáng Giá Bao Nhiêu</td>
+    <td>1</td>
+    <td>₫95,000</td>
+    <td>₫95,000</td>
+  </tr>
+  <tr>
+    <td>P004</td>
+    <td>Đắc Nhân Tâm</td>
+    <td>1</td>
+    <td>₫125,000</td>
+    <td>₫125,000</td>
+  </tr>
+  <tr>
+    <td colspan="4" style="text-align: right; font-weight: bold">
+      Tổng cộng:
+    </td>
+    <td style="font-weight: bold; color: green">₫445,000</td>
+  </tr>
+</table>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

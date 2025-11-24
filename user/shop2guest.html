@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tiểu thuyết - Thành Hưng BookStore</title>
+    <meta
+      name="description"
+      content="Thành Hưng BookStore - Khám phá kho tàng tiểu thuyết đặc sắc: Arya bàn bên, Thiên sứ nhà bên, Nhà Giả Kim, Tuổi Trẻ Đáng Giá Bao Nhiêu và nhiều tác phẩm nổi tiếng khác."
+    />
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='../index.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="../index.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="shop2guest.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1guest.html">Manga</a>
+              <a class="btn--light" href="shop2guest.html">Lịch sử</a>
+              <a class="btn--light" href="shop1guest.html">Tâm lý học</a>
+              <a class="btn--light" href="shop2guest.html">Giáo dục</a>
+              <a class="btn--light" href="shop1guest.html">Tài liệu</a>
+              <a class="btn--light" href="shop2guest.html">Tham khảo</a>
+              <a class="btn--light" href="shop1guest.html">Hướng dẫn</a>
+              <a class="btn--light" href="shop2guest.html">Light Novel</a>
+              <a class="btn--light" href="shop1guest.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="searchguest.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Tài khoản ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="openLoginPopup()">
+                Đăng nhập
+              </button>
+              <button class="btn btn--light" onclick="openRegisterPopup()">
+                Đăng ký
+              </button>
+            </div>
+          </div>
+          <button class="dropbtn" onclick="location='emptycartguest.html'">
+            🛒
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <h1 style="text-align: center; color: #d32f2f">📚 Thể Loại Tiểu Thuyết</h1>
+    <p style="text-align: center; margin-top: -10px; color: #555">
+      Các tập Tiểu Thuyết nổi bật dành cho bạn!
+    </p>
+
+    <div
+      style="
+        text-align: center;
+        background: #fff8e1;
+        padding: 12px;
+        border-radius: 10px;
+        margin-top: 20px;
+      "
+    >
+      <b>🔥 Khám phá bộ sưu tập Tiểu Thuyết hấp dẫn nhất của Thành Hưng!</b>
+    </div>
+
+    <main class="container">
+      <div class="grid">
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/aryabanben.jpg" />
+          <h3>Arya bàn bên</h3>
+          <div class="price">₫110,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/thiensu.jpg" />
+          <h3>Thiên sứ nhà bên</h3>
+          <div class="price">₫115,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/tuoitre.jpg" />
+          <h3>Tuổi trẻ đáng giá bao nhiêu</h3>
+          <div class="price">₫95,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/dacnhantam.jpg" />
+          <h3>Đắc nhân tâm</h3>
+          <div class="price">₫125,000</div>
+          <div class="rating">★☆☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/nhagiakim.jpg" />
+          <h3>Nhà giả kim</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/hatgiong.jpg" />
+          <h3>Hạt giống tâm hồn-16</h3>
+          <div class="price">₫85,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/thep.jpg" />
+          <h3>Thép đã tôi thế đấy</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/vutru.jpg" />
+          <h3>Vũ trụ trong vỏ hạt dẻ</h3>
+          <div class="price">₫140,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/demen.jpg" />
+          <h3>Dế mèn phiêu lưu ký</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/harry.jpg" />
+          <h3>Harry Potter and the Sorcerer’s Stone</h3>
+          <div class="price">₫120,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1guest.html'">
+          <img src="../img/chipheo.jpg" />
+          <h3>Chí Phèo</h3>
+          <div class="price">₫70,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2guest.html'">
+          <img src="../img/tatden.jpg" />
+          <h3>Tắt đèn</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <a href="shop1guest.html">&laquo;</a>
+        <a href="shop1guest.html">1</a>
+        <a href="shop2guest.html">2</a>
+        <a href="shop1guest.html">3</a>
+        <a href="shop2guest.html">4</a>
+        <a href="shop1guest.html">5</a>
+        <a href="shop1guest.html">&raquo;</a>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="grid container">
+        <div>
+          <h3>Thành Hưng BookStore</h3>
+          <p>Nhà sách bán chạy số 1 Việt Nam</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>Email: support@greenbookstore.vn</p>
+          <p>Phone: +84 123 456 789</p>
+          <p>Address: 273 An Dương Vương, phường Chợ Quán, TPHCM</p>
+        </div>
+        <div>
+          <h3>Follow</h3>
+          <p>
+            <a href="https://www.facebook.com/TruongDaihocSaiGon.SGU"
+              >Facebook</a
+            >
+            | <a href="https://www.instagram.com/sontungmtp/">Instagram</a>
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          text-align: center;
+          padding-top: 12px;
+          color: rgba(255, 255, 255, 0.8);
+        "
+      >
+        © 2025 Thành Hưng BookStore
+      </div>
+    </footer>
+    <!-- Nút có thể nằm trong header -->
+    <!--
+
+-->
+
+    <!-- POPUP ĐĂNG NHẬP -->
+    <div id="login-popup" class="popup">
+      <div class="popup-box">
+        <span class="close-btn" onclick="closeLoginPopup()">×</span>
+        <h2>Đăng nhập tài khoản</h2>
+        <form class="popup-form">
+          <input type="text" placeholder="Tên đăng nhập" />
+          <input type="password" placeholder="Mật khẩu" />
+          <button
+            type="button"
+            class="btn btn--primary"
+            style="width: 100%"
+            onclick="location.href='home_loggedin.html'"
+          >
+            Đăng nhập
+          </button>
+          <p style="text-align: center; margin-top: 10px; font-size: 14px">
+            Chưa có tài khoản?
+            <a href="#" onclick="switchToRegister()">Đăng ký ngay</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- POPUP ĐĂNG KÝ -->
+    <div id="register-popup" class="popup">
+      <div class="popup-box">
+        <span class="close-btn" onclick="closeRegisterPopup()">×</span>
+        <h2>Tạo tài khoản mới</h2>
+        <form class="popup-form">
+          <input type="text" placeholder="Tên đăng nhập" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Mật khẩu" />
+          <button
+            type="button"
+            class="btn btn--primary"
+            style="width: 100%"
+            onclick="location.href='home_loggedin.html'"
+          >
+            Đăng ký
+          </button>
+          <p style="text-align: center; margin-top: 10px; font-size: 14px">
+            Đã có tài khoản?
+            <a href="#" onclick="switchToLogin()">Đăng nhập</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script>
+      function openLoginPopup() {
+        document.getElementById("login-popup").style.display = "flex";
+      }
+      function closeLoginPopup() {
+        document.getElementById("login-popup").style.display = "none";
+      }
+      function openRegisterPopup() {
+        document.getElementById("register-popup").style.display = "flex";
+      }
+      function closeRegisterPopup() {
+        document.getElementById("register-popup").style.display = "none";
+      }
+
+      /* Đóng khi click ra ngoài */
+      window.addEventListener("click", function (e) {
+        const login = document.getElementById("login-popup");
+        const register = document.getElementById("register-popup");
+        if (e.target === login) closeLoginPopup();
+        if (e.target === register) closeRegisterPopup();
+      });
+
+      /* Chuyển qua lại giữa 2 popup */
+      function switchToRegister() {
+        closeLoginPopup();
+        setTimeout(openRegisterPopup, 200);
+      }
+      function switchToLogin() {
+        closeRegisterPopup();
+        setTimeout(openLoginPopup, 200);
+      }
+
+      // Đảm bảo click card để mở trang sản phẩm
+      document.querySelectorAll(".card").forEach((card) => {
+        // Lấy link trong onclick hoặc bỏ trong data-link
+        const inlineLink = card.getAttribute("onclick");
+        const match = inlineLink?.match(/'(.*?)'/);
+        const link = match ? match[1] : null;
+
+        if (link) {
+          // Gắn lại sự kiện click chuẩn
+          card.addEventListener("click", () => {
+            location.href = link;
+          });
+        }
+
+        // Xử lý nút "Thêm vào giỏ" — chặn lan sự kiện click
+        const addBtn = card.querySelector(".btn.ghost");
+        if (addBtn) {
+          addBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            alert("Đăng nhập hoặc đăng kí để tiếp tục!");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

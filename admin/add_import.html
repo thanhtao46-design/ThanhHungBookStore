@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Phiếu Nhập Hàng</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Slim Select CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/slim-select@2.8.2/dist/slimselect.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+      /* Cố định layout bảng, chia cột đều */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed; /* <-- quan trọng */
+      }
+
+      .table th,
+      .table td {
+        padding: 8px;
+        text-align: left;
+        vertical-align: middle;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Cột sản phẩm chiếm nhiều hơn */
+      .table th:nth-child(1),
+      .table td:nth-child(1) {
+        width: 45%;
+      }
+
+      /* Các cột còn lại chia đều */
+      .table th:nth-child(2),
+      .table td:nth-child(2),
+      .table th:nth-child(3),
+      .table td:nth-child(3),
+      .table th:nth-child(4),
+      .table td:nth-child(4) {
+        width: 18%;
+      }
+
+      /* SlimSelect trong bảng luôn full ô */
+      .ss-main {
+        width: 100% !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        line-height: 38px !important;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      /* Giữ nội dung gọn, không giãn */
+      .ss-single-selected .ss-value,
+      .ss-single-selected .placeholder {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* Cố định style chữ */
+      .ss-single-selected {
+        font-size: 15px !important;
+        font-weight: normal !important;
+      }
+
+      /* Khi click vào hiện viền xanh lá */
+      .ss-main:focus-within {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+      }
+
+      input.price {
+        text-align: right;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #28a745;
+        box-shadow: 0 0 4px rgba(40, 167, 69, 0.4);
+        color: #000;
+        font-weight: normal;
+      }
+
+      input:-webkit-autofill {
+        -webkit-text-fill-color: #000 !important;
+        -webkit-box-shadow: 0 0 0 1000px white inset !important;
+        font-weight: normal !important;
+        transition: background-color 9999s ease-in-out 0s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÝ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+              if (document.referrer) {
+                window.history.back();
+              } else {
+                location.href = 'dashboard.html';
+              }
+            "
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>Thêm Phiếu Nhập Hàng</h2>
+
+      <form class="form">
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <div style="flex: 1; min-width: 250px">
+            <label><b>Ngày nhập hàng</b></label
+            ><br />
+            <input type="date" />
+          </div>
+
+          <div style="flex: 1; min-width: 250px">
+            <label><b>Nhà cung cấp</b></label
+            ><br />
+            <select id="supplier">
+              <option value="" disabled selected>
+                Chọn hoặc nhập nhà cung cấp
+              </option>
+              <option value="FAHASA">FAHASA</option>
+              <option value="Phương Nam Book">Phương Nam Book</option>
+              <option value="Alpha Books">Alpha Books</option>
+              <option value="Tân Việt Books">Tân Việt Books</option>
+              <option value="Kim Đồng Publisher">Kim Đồng Publisher</option>
+              <option value="ADC Book Distributor">ADC Book Distributor</option>
+              <option value="NXB Trẻ">NXB Trẻ</option>
+            </select>
+          </div>
+
+          <div style="flex: 1; min-width: 250px">
+            <label><b>Nhân viên phụ trách</b></label
+            ><br />
+            <input type="text" placeholder="Tên nhân viên" />
+          </div>
+        </div>
+
+        <h3 style="margin-top: 20px">Danh sách sản phẩm</h3>
+
+        <table class="table" id="productTable">
+          <tr>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá (₫)</th>
+            <th>Thao tác</th>
+          </tr>
+
+          <!-- Dòng mặc định -->
+          <tr>
+            <td>
+              <select class="product-select">
+                <option value="" disabled selected>
+                  Chọn hoặc nhập sản phẩm
+                </option>
+                <option value="Số đỏ">Số đỏ</option>
+                <option value="Đắc nhân tâm">Đắc nhân tâm</option>
+                <option value="Nhà giả kim">Nhà giả kim</option>
+                <option value="Tuổi trẻ đáng giá bao nhiêu">
+                  Tuổi trẻ đáng giá bao nhiêu
+                </option>
+                <option value="Hạt giống tâm hồn">Hạt giống tâm hồn</option>
+                <option value="Thép đã tôi thế đấy">Thép đã tôi thế đấy</option>
+              </select>
+            </td>
+            <td><input type="number" min="1" placeholder="100" /></td>
+            <td><input type="text" class="price" placeholder="120,000" /></td>
+            <td>
+              <button
+                type="button"
+                class="btn ghost"
+                onclick="this.closest('tr').remove()"
+              >
+                Xóa
+              </button>
+            </td>
+          </tr>
+        </table>
+
+        <div style="margin-top: 10px">
+          <button
+            type="button"
+            class="btn"
+            onclick="addRow()"
+            style="margin-right: 10px"
+          >
+            + Thêm sản phẩm
+          </button>
+        </div>
+
+        <div
+          style="
+            margin-top: 20px;
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+          "
+        >
+          <button
+            type="button"
+            class="btn ghost"
+            onclick="location.href='import.html'"
+          >
+            Hủy
+          </button>
+          <button
+            type="button"
+            class="btn"
+            onclick="location.href='receiptconfirm.html'"
+          >
+            Xác nhận
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Slim Select JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slim-select@2.8.2/dist/slimselect.min.js"></script>
+
+    <script>
+      // === KHỞI TẠO SLIM SELECT ===
+      new SlimSelect({
+        select: "#supplier",
+        searchPlaceholder: "Nhập để tìm...",
+        placeholder: "Chọn hoặc nhập nhà cung cấp",
+        showSearch: true,
+      });
+
+      // === SLIM SELECT CHO TÊN SẢN PHẨM ===
+      new SlimSelect({
+        select: ".product-select",
+        searchPlaceholder: "Nhập để tìm sản phẩm...",
+        placeholder: "Chọn hoặc nhập sản phẩm",
+        showSearch: true,
+      });
+
+      // === FORMAT GIÁ TIỀN ===
+      function autoFormatCurrency(input) {
+        let value = input.value.replace(/\D/g, "");
+        if (!value) {
+          input.value = "";
+          return;
+        }
+        input.value = Number(value).toLocaleString("en-US");
+      }
+
+      document.querySelectorAll(".price").forEach((el) => {
+        el.addEventListener("input", () => autoFormatCurrency(el));
+      });
+
+      // === HÀM THÊM DÒNG MỚI ===
+      function addRow() {
+        const table = document.getElementById("productTable");
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>
+            <select class="product-select">
+              <option value="" disabled selected>Chọn hoặc nhập sản phẩm</option>
+              <option value="Số đỏ">Số đỏ</option>
+              <option value="Đắc nhân tâm">Đắc nhân tâm</option>
+              <option value="Nhà giả kim">Nhà giả kim</option>
+              <option value="Tuổi trẻ đáng giá bao nhiêu">Tuổi trẻ đáng giá bao nhiêu</option>
+              <option value="Hạt giống tâm hồn">Hạt giống tâm hồn</option>
+              <option value="Thép đã tôi thế đấy">Thép đã tôi thế đấy</option>
+            </select>
+          </td>
+          <td><input type="number" min="1" placeholder="0" /></td>
+          <td><input type="text" class="price" placeholder="0" /></td>
+          <td>
+            <button type="button" class="btn ghost" onclick="this.closest('tr').remove()">Xóa</button>
+          </td>
+        `;
+        table.appendChild(row);
+
+        // Gắn lại SlimSelect cho ô mới
+        new SlimSelect({
+          select: row.querySelector(".product-select"),
+          searchPlaceholder: "Nhập để tìm sản phẩm...",
+          placeholder: "Chọn hoặc nhập sản phẩm",
+          showSearch: true,
+        });
+
+        // Gắn auto-format cho ô giá mới
+        const priceInput = row.querySelector(".price");
+        priceInput.addEventListener("input", () =>
+          autoFormatCurrency(priceInput)
+        );
+      }
+    </script>
+  </body>
+</html>

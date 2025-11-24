@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="home_loggedin.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="home_loggedin.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="home_loggedin.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="home_loggedin.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="home_loggedin.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="search.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Thanh Cao ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="location='userinfo.html'">
+                Chi tiết
+              </button>
+              <button class="btn btn--light" onclick="location='../index.html'">
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+          <button id="cart-btn" class="dropbtn" onclick="location='cart.html'">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="container" style="text-align: center; padding: 40px 0">
+      <h2 style="color: var(--green-dark)">Giỏ hàng trống</h2>
+      <p>Hãy thêm sản phẩm vào giỏ hàng của bạn.</p>
+      <a class="btn" href="home_loggedin.html">Mua sắm ngay</a>
+    </main>
+  </body>
+</html>

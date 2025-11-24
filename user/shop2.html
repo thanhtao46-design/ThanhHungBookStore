@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tiểu thuyết - Thành Hưng BookStore</title>
+    <meta
+      name="description"
+      content="Thành Hưng BookStore - Khám phá kho tàng tiểu thuyết đặc sắc: Arya bàn bên, Thiên sứ nhà bên, Nhà Giả Kim, Tuổi Trẻ Đáng Giá Bao Nhiêu và nhiều tác phẩm nổi tiếng khác."
+    />
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="shop2.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="shop2.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="shop2.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="shop2.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="shop2.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="search.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Thanh Cao ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="location='userinfo.html'">
+                Chi tiết
+              </button>
+              <button class="btn btn--light" onclick="location='../index.html'">
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+          <button id="cart-btn" class="dropbtn" onclick="location='cart.html'">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <h1 style="text-align: center; color: #d32f2f">📚 Thể Loại Tiểu Thuyết</h1>
+    <p style="text-align: center; margin-top: -10px; color: #555">
+      Các tập Tiểu Thuyết nổi bật dành cho bạn!
+    </p>
+
+    <div
+      style="
+        text-align: center;
+        background: #fff8e1;
+        padding: 12px;
+        border-radius: 10px;
+        margin-top: 20px;
+      "
+    >
+      <b>🔥 Khám phá bộ sưu tập Tiểu Thuyết hấp dẫn nhất của Thành Hưng!</b>
+    </div>
+    <main class="container">
+      <div class="grid">
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/aryabanben.jpg" />
+          <h3>Arya bàn bên</h3>
+          <div class="price">₫110,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/thiensu.jpg" />
+          <h3>Nổi buồn chiến tranh</h3>
+          <div class="price">₫115,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/tuoitre.jpg" />
+          <h3>Tuổi trẻ đáng giá bao nhiêu</h3>
+          <div class="price">₫95,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/dacnhantam.jpg" />
+          <h3>Đắc nhân tâm</h3>
+          <div class="price">₫125,000</div>
+          <div class="rating">★☆☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/nhagiakim.jpg" />
+          <h3>Nhà giả kim</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/hatgiong.jpg" />
+          <h3>Hạt giống tâm hồn-16</h3>
+          <div class="price">₫85,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/thep.jpg" />
+          <h3>Thép đã tôi thế đấy</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/vutru.jpg" />
+          <h3>Vũ trụ trong vỏ hạt dẻ</h3>
+          <div class="price">₫140,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/demen.jpg" />
+          <h3>Dế mèn phiêu lưu ký</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/harry.jpg" />
+          <h3>Harry Potter and the Sorcerer’s Stone</h3>
+          <div class="price">₫120,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/chipheo.jpg" />
+          <h3>Chí Phèo</h3>
+          <div class="price">₫70,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/tatden.jpg" />
+          <h3>Tắt đèn</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost">Thêm vào giỏ</button>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <a href="shop1.html">&laquo;</a>
+        <a href="shop1.html">1</a>
+        <a href="shop2.html">2</a>
+        <a href="shop1.html">3</a>
+        <a href="shop2.html">4</a>
+        <a href="shop1.html">5</a>
+        <a href="shop1.html">&raquo;</a>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="grid container">
+        <div>
+          <h3>Thành Hưng BookStore</h3>
+          <p>Nhà sách bán chạy số 1 Việt Nam</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>Email: support@greenbookstore.vn</p>
+          <p>Phone: +84 393 177 470</p>
+          <p>Address: 734 Nguyễn Chí Thanh, phường Minh Phụng, TPHCM</p>
+        </div>
+        <div>
+          <h3>Follow</h3>
+          <p>
+            <a href="https://www.facebook.com/TruongDaihocSaiGon.SGU"
+              >Facebook</a
+            >
+            | <a href="https://www.instagram.com/sontungmtp/">Instagram</a>
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          text-align: center;
+          padding-top: 12px;
+          color: rgba(255, 255, 255, 0.8);
+        "
+      >
+        © 2025 Thành Hưng BookStore
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cartCountSpan = document.getElementById("cart-count");
+        let cartCount = Number(cartCountSpan?.textContent || 0);
+
+        // Xử lý click trên mỗi card
+        document.querySelectorAll(".card").forEach((card) => {
+          // Nếu card có onclick hoặc data-link => đọc link
+          let url = null;
+          const inline = card.getAttribute("onclick");
+          const dataLink = card.dataset.link;
+
+          if (inline) {
+            const match = inline.match(/'(.*?)'|"(.*?)"/);
+            url = match ? match[1] || match[2] : null;
+          } else if (dataLink) {
+            url = dataLink;
+          }
+
+          // Khi click vào card → mở link
+          card.addEventListener("click", () => {
+            if (url) location.href = url;
+          });
+
+          // Khi click vào nút thêm giỏ hàng → chặn lan lên card
+          const addBtn = card.querySelector(".btn.ghost");
+          if (addBtn) {
+            addBtn.addEventListener("click", (e) => {
+              e.stopPropagation(); // ⚠️ Ngăn click lan ra card
+              cartCount++;
+              cartCountSpan.textContent = cartCount;
+              alert("Đã thêm sản phẩm vào giỏ hàng!");
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

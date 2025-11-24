@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giá sản phẩm theo thể loại</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+      /* ✅ Căn phải các cột có số liệu */
+      .table th:nth-child(3),
+      .table td:nth-child(3),
+      .table th:nth-child(4),
+      .table td:nth-child(4),
+      .table th:nth-child(5),
+      .table td:nth-child(5) {
+        text-align: right;
+      }
+
+      /* Làm nổi bật giá bán và lợi nhuận */
+      .table td:nth-child(4),
+      .table td:nth-child(5) {
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" alt="logo" />
+          <h1>QUẢN LÝ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+    if (document.referrer) {
+      window.history.back();
+    } else {
+      location.href = 'dashboard.html';
+    }
+  "
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>Giá sản phẩm theo thể loại</h2>
+
+      <h3 style="margin-top: 15px">
+        Tìm thấy 10 sản phẩm thuộc thể loại
+        <span style="color: blue">"Tiểu thuyết"</span>
+      </h3>
+
+      <table class="table" id="priceTable">
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá nhập</th>
+          <th>Giá bán</th>
+          <th>Lợi nhuận (%)</th>
+          <th>Thao tác</th>
+        </tr>
+
+        <tr>
+          <td>P001</td>
+          <td>Arya bàn bên</td>
+          <td>₫85,000</td>
+          <td>₫110,000</td>
+          <td>29.41%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P002</td>
+          <td>Thiên sứ nhà bên</td>
+          <td>₫90,000</td>
+          <td>₫115,000</td>
+          <td>27.78%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P003</td>
+          <td>Tuổi Trẻ Đáng Giá Bao Nhiêu</td>
+          <td>₫70,000</td>
+          <td>₫95,000</td>
+          <td>35.71%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P004</td>
+          <td>Đắc Nhân Tâm</td>
+          <td>₫95,000</td>
+          <td>₫125,000</td>
+          <td>31.58%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P005</td>
+          <td>Nhà Giả Kim</td>
+          <td>₫80,000</td>
+          <td>₫100,000</td>
+          <td>25.00%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P006</td>
+          <td>Hạt Giống Tâm Hồn</td>
+          <td>₫65,000</td>
+          <td>₫85,000</td>
+          <td>30.77%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P007</td>
+          <td>Thép Đã Tôi Thế Đấy</td>
+          <td>₫78,000</td>
+          <td>₫100,000</td>
+          <td>28.21%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P008</td>
+          <td>Vũ Trụ Trong Vỏ Hạt Dẻ</td>
+          <td>₫110,000</td>
+          <td>₫140,000</td>
+          <td>27.27%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P009</td>
+          <td>Dế Mèn Phiêu Lưu Ký</td>
+          <td>₫60,000</td>
+          <td>₫80,000</td>
+          <td>33.33%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+        <tr>
+          <td>P010</td>
+          <td>Harry Potter và Hòn Đá Phù Thủy</td>
+          <td>₫120,000</td>
+          <td>₫150,000</td>
+          <td>25.00%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <h3>Chỉnh sửa Giá / Lợi nhuận</h3>
+
+        <label><b>Mã sản phẩm:</b></label>
+        <input type="text" id="prodId" readonly />
+
+        <label><b>Giá nhập (₫):</b></label>
+        <input type="number" id="costPrice" readonly />
+
+        <label><b>Giá bán (₫):</b></label>
+        <input type="number" id="sellPrice" oninput="updateMargin()" />
+
+        <label><b>Lợi nhuận (%):</b></label>
+        <input type="number" id="newMargin" oninput="updatePrice()" />
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+          "
+        >
+          <button class="btn ghost" onclick="closeModal()">Hủy</button>
+          <button class="btn" onclick="saveModal()">Lưu</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentRow = null;
+
+      function parseNumber(str) {
+        return parseFloat(str.replace(/[₫,]/g, ""));
+      }
+
+      function openModal(button) {
+        currentRow = button.closest("tr");
+        const cells = currentRow.cells;
+
+        const id = cells[0].innerText;
+        const cost = parseNumber(cells[2].innerText);
+        const sell = parseNumber(cells[3].innerText);
+        const margin = parseFloat(cells[4].innerText);
+
+        document.getElementById("prodId").value = id;
+        document.getElementById("costPrice").value = cost;
+        document.getElementById("sellPrice").value = sell;
+        document.getElementById("newMargin").value = margin;
+
+        document.getElementById("editModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("editModal").style.display = "none";
+      }
+
+      function updateMargin() {
+        const cost = parseFloat(document.getElementById("costPrice").value);
+        const sell = parseFloat(document.getElementById("sellPrice").value);
+        if (!cost || !sell) return;
+        const margin = ((sell - cost) / cost) * 100;
+        document.getElementById("newMargin").value = margin.toFixed(2);
+      }
+
+      function updatePrice() {
+        const cost = parseFloat(document.getElementById("costPrice").value);
+        const margin = parseFloat(document.getElementById("newMargin").value);
+        if (!cost || isNaN(margin)) return;
+        const sell = cost * (1 + margin / 100);
+        document.getElementById("sellPrice").value = sell.toFixed(0);
+      }
+
+      function saveModal() {
+        if (!currentRow) return;
+        const sell = parseFloat(document.getElementById("sellPrice").value);
+        const margin = parseFloat(document.getElementById("newMargin").value);
+
+        currentRow.cells[3].innerHTML = "₫" + sell.toLocaleString("vi-VN");
+        currentRow.cells[4].innerHTML = margin.toFixed(2) + "%";
+
+        currentRow.style.transition = "background 0.6s";
+        currentRow.style.background = "#fff3cd";
+        setTimeout(() => (currentRow.style.background = ""), 800);
+
+        closeModal();
+        alert("Đã cập nhật thành công!");
+      }
+
+      window.onclick = function (e) {
+        const modal = document.getElementById("editModal");
+        if (e.target === modal) closeModal();
+      };
+    </script>
+  </body>
+</html>

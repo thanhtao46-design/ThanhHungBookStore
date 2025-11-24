@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết đơn hàng</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      /* Căn phải các cột Số lượng, Đơn giá, Thành tiền */
+      .table th:nth-child(3),
+      .table td:nth-child(3),
+      .table th:nth-child(4),
+      .table td:nth-child(4),
+      .table th:nth-child(5),
+      .table td:nth-child(5) {
+        text-align: right;
+      }
+
+      /* Dòng tổng cộng */
+      .table tr:last-child td {
+        font-weight: bold;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÝ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="form">
+        <h2>Chi tiết đơn hàng</h2>
+
+        <p><b>Mã đơn hàng:</b> O002</p>
+        <p><b>Khách hàng:</b> Cao Thái Phương Thanh</p>
+        <p><b>Email:</b> thanhcao@gmail.com</p>
+        <p><b>Số điện thoại:</b> 0909 022 966</p>
+        <p>
+          <b>Địa chỉ giao hàng:</b> 273 An Dương Vương, Phường Chợ Quán, TP. Hồ
+          Chí Minh
+        </p>
+        <p><b>Ngày đặt hàng:</b> 26/01/2025</p>
+        <p>
+          <b>Trạng thái:</b>
+          <span id="statusText" class="badge">Đã hủy</span>
+          <button
+            class="btn ghost"
+            style="margin-left: 8px"
+            onclick="openStatusModal()"
+          >
+            Chỉnh sửa trạng thái
+          </button>
+        </p>
+
+        <table class="table">
+          <tr>
+            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Thành tiền</th>
+          </tr>
+          <tr>
+            <td>P004</td>
+            <td>Đắc Nhân Tâm</td>
+            <td>1</td>
+            <td>₫125,000</td>
+            <td>₫125,000</td>
+          </tr>
+          <tr>
+            <td>P005</td>
+            <td>Nhà Giả Kim</td>
+            <td>1</td>
+            <td>₫100,000</td>
+            <td>₫100,000</td>
+          </tr>
+          <tr>
+            <td>P006</td>
+            <td>Hạt Giống Tâm Hồn</td>
+            <td>1</td>
+            <td>₫85,000</td>
+            <td>₫85,000</td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align: right; font-weight: bold">
+              Tổng cộng:
+            </td>
+            <td style="font-weight: bold; color: green">₫310,000</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+
+    <!-- ===== Modal chỉnh sửa trạng thái ===== -->
+    <div class="modal" id="statusModal" style="display: none">
+      <div class="modal-content">
+        <h3>Cập nhật trạng thái đơn hàng</h3>
+        <label><b>Trạng thái mới:</b></label>
+        <select id="newStatus">
+          <option>Mới</option>
+          <option>Đang xử lý</option>
+          <option>Đã giao</option>
+          <option>Đã hủy</option>
+        </select>
+        <div class="modal-actions">
+          <button type="button" class="btn ghost" onclick="closeStatusModal()">
+            Hủy
+          </button>
+          <button type="button" class="btn" onclick="saveStatus()">
+            Lưu thay đổi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ✅ Hàm đặt màu theo trạng thái
+      function setBadgeColor(badge, text) {
+        badge.className = "badge"; // Xóa hết class cũ
+        if (text === "Mới") badge.classList.add("moi");
+        else if (text === "Đang xử lý") badge.classList.add("xuly");
+        else if (text === "Đã giao") badge.classList.add("dagiao");
+        else if (text === "Đã hủy") badge.classList.add("dahuy");
+      }
+
+      // ✅ Áp dụng màu ban đầu khi load trang
+      document.querySelectorAll(".badge").forEach((badge) => {
+        setBadgeColor(badge, badge.textContent.trim());
+      });
+
+      // ====== Modal ======
+      function openStatusModal() {
+        document.getElementById("statusModal").style.display = "flex";
+      }
+
+      function closeStatusModal() {
+        document.getElementById("statusModal").style.display = "none";
+      }
+
+      // ✅ Cập nhật trạng thái + màu
+      function saveStatus() {
+        const status = document.getElementById("newStatus").value;
+        const badge = document.getElementById("statusText");
+
+        badge.textContent = status;
+        setBadgeColor(badge, status);
+
+        alert("Cập nhật thành công!");
+        closeStatusModal();
+      }
+    </script>
+  </body>
+</html>

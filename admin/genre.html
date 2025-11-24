@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Thể loại</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÝ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>Quản Lý Thể Loại</h2>
+
+      <div style="margin-bottom: 16px">
+        <button class="btn" id="openAddModal">Thêm thể loại</button>
+      </div>
+
+      <table class="table">
+        <tr>
+          <th>Tên thể loại</th>
+          <th>Số lượng sách</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+
+        <tr>
+          <td>Tiểu thuyết</td>
+          <td>25</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Khoa học</td>
+          <td>18</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Lịch sử</td>
+          <td>12</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tâm lý học</td>
+          <td>14</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Giáo dục</td>
+          <td>20</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tài liệu</td>
+          <td>10</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Tham khảo</td>
+          <td>8</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Hướng dẫn</td>
+          <td>15</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Truyện tranh</td>
+          <td>30</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Light Novel</td>
+          <td>22</td>
+          <td class="status">Hoạt động</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">Ẩn</button>
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <!-- Popup: Thêm thể loại -->
+    <div class="modal" id="addModal">
+      <div class="modal-content">
+        <h3>Thêm thể loại mới</h3>
+        <form id="addGenreForm">
+          <label>Tên thể loại:</label>
+          <input
+            type="text"
+            id="addGenreName"
+            placeholder="Nhập tên thể loại"
+            required
+          />
+
+          <label>Trạng thái:</label>
+          <select id="addGenreStatus">
+            <option value="Hoạt động">Hoạt động</option>
+            <option value="Không hoạt động">Không hoạt động</option>
+          </select>
+
+          <div class="modal-actions">
+            <button type="button" class="btn" id="saveAddGenre">Lưu</button>
+            <button
+              type="button"
+              class="btn ghost"
+              onclick="closeModal('addModal')"
+            >
+              Hủy
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup: Sửa thể loại -->
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <h3>Chỉnh sửa thể loại</h3>
+        <form id="editGenreForm">
+          <label>Tên thể loại:</label>
+          <input type="text" id="editGenreName" required />
+
+          <label>Trạng thái:</label>
+          <select id="editGenreStatus">
+            <option value="Hoạt động">Hoạt động</option>
+            <option value="Không hoạt động">Không hoạt động</option>
+          </select>
+
+          <div class="modal-actions">
+            <button type="button" class="btn" id="saveEditGenre">Lưu</button>
+            <button
+              type="button"
+              class="btn ghost"
+              onclick="closeModal('editModal')"
+            >
+              Hủy
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const addModal = document.getElementById("addModal");
+      const editModal = document.getElementById("editModal");
+      let currentRow = null;
+
+      // 🪄 Mở modal thêm
+      document.getElementById("openAddModal").onclick = () =>
+        (addModal.style.display = "flex");
+
+      // Đóng modal
+      function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+      }
+
+      window.onclick = (e) => {
+        if (e.target === addModal) addModal.style.display = "none";
+        if (e.target === editModal) editModal.style.display = "none";
+      };
+
+      // ➕ Thêm thể loại
+      document.getElementById("saveAddGenre").onclick = () => {
+        const name = document.getElementById("addGenreName").value;
+        const status = document.getElementById("addGenreStatus").value;
+        const table = document.querySelector(".table");
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${name}</td>
+          <td>0</td>
+          <td class="status">${status}</td>
+          <td>
+            <button class="btn" onclick="openEditModal(this)">Sửa</button>
+            <button class="btn" onclick="deleteGenre(this)">Xóa</button>
+            <button class="btn" onclick="toggleGenre(this)">${
+              status === "Hoạt động" ? "Ẩn" : "Hiện"
+            }</button>
+          </td>
+        `;
+        table.appendChild(newRow);
+        alert(`Đã thêm thể loại "${name}" thành công!`);
+        document.getElementById("addGenreForm").reset();
+        closeModal("addModal");
+      };
+
+      // 🗑️ Xóa thể loại
+      function deleteGenre(btn) {
+        const name = btn.closest("tr").querySelector("td").textContent;
+        btn.closest("tr").remove();
+        alert(`Đã xóa thể loại "${name}"!`);
+      }
+
+      // 👁️ Ẩn / Hiện thể loại
+      function toggleGenre(btn) {
+        const row = btn.closest("tr");
+        const statusCell = row.querySelector(".status");
+
+        if (statusCell.textContent === "Hoạt động") {
+          row.classList.add("hidden-row");
+          statusCell.textContent = "Không hoạt động";
+          btn.textContent = "Hiện";
+          alert("Thể loại đã được ẩn!");
+        } else {
+          row.classList.remove("hidden-row");
+          statusCell.textContent = "Hoạt động";
+          btn.textContent = "Ẩn";
+          alert("Thể loại đã được hiển thị lại!");
+        }
+      }
+
+      // ✏️ Mở modal sửa
+      function openEditModal(btn) {
+        currentRow = btn.closest("tr");
+        const name = currentRow.querySelector("td").textContent;
+        const status = currentRow.querySelector(".status").textContent;
+        document.getElementById("editGenreName").value = name;
+        document.getElementById("editGenreStatus").value = status;
+        editModal.style.display = "flex";
+      }
+
+      // 💾 Lưu chỉnh sửa
+      document.getElementById("saveEditGenre").onclick = () => {
+        if (!currentRow) return;
+        const name = document.getElementById("editGenreName").value;
+        const status = document.getElementById("editGenreStatus").value;
+        currentRow.querySelector("td").textContent = name;
+        currentRow.querySelector(".status").textContent = status;
+        const toggleBtn = currentRow.querySelector("button:last-child");
+        toggleBtn.textContent = status === "Hoạt động" ? "Ẩn" : "Hiện";
+        alert(`Đã cập nhật thể loại "${name}"!`);
+        closeModal("editModal");
+      };
+    </script>
+  </body>
+</html>

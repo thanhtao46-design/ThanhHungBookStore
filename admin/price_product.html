@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kết quả tra cứu giá sản phẩm</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+      /* ✅ Căn phải các cột số liệu: Giá nhập, Giá bán, Lợi nhuận */
+      .table th:nth-child(3),
+      .table td:nth-child(3),
+      .table th:nth-child(4),
+      .table td:nth-child(4),
+      .table th:nth-child(5),
+      .table td:nth-child(5) {
+        text-align: right;
+      }
+
+      /* Căn giữa cột Thao tác */
+      .table th:nth-child(6),
+      .table td:nth-child(6) {
+        text-align: center;
+      }
+
+      /* Làm nổi bật các ô giá và phần trăm */
+      .table td:nth-child(3),
+      .table td:nth-child(4),
+      .table td:nth-child(5) {
+        font-weight: 500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" alt="logo" />
+          <h1>QUẢN LÝ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>Kết quả tra cứu sản phẩm</h2>
+
+      <button class="btn ghost" onclick="location.href='price.html'">
+        ← Quay lại danh mục giá
+      </button>
+
+      <h3 style="margin-top: 15px">
+        Tìm thấy <b>1 sản phẩm</b> khớp với mã
+        <span style="color: blue">"P001"</span>
+      </h3>
+
+      <table class="table" id="priceTable">
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá nhập</th>
+          <th>Giá bán</th>
+          <th>Lợi nhuận (%)</th>
+          <th>Thao tác</th>
+        </tr>
+
+        <tr>
+          <td>P001</td>
+          <td>Arya bàn bên</td>
+          <td>₫85,000</td>
+          <td>₫110,000</td>
+          <td>29.41%</td>
+          <td>
+            <button class="btn" onclick="openModal(this)">Chỉnh sửa</button>
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <h3>Chỉnh sửa Giá / Lợi nhuận</h3>
+
+        <label><b>Mã sản phẩm:</b></label>
+        <input type="text" id="prodId" readonly />
+
+        <label><b>Giá nhập (₫):</b></label>
+        <input type="number" id="costPrice" readonly />
+
+        <label><b>Giá bán (₫):</b></label>
+        <input type="number" id="sellPrice" oninput="updateMargin()" />
+
+        <label><b>Lợi nhuận (%):</b></label>
+        <input type="number" id="newMargin" oninput="updatePrice()" />
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+          "
+        >
+          <button class="btn ghost" onclick="closeModal()">Hủy</button>
+          <button class="btn" onclick="saveModal()">Lưu</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentRow = null;
+
+      function parseNumber(str) {
+        return parseFloat(str.replace(/[₫,]/g, ""));
+      }
+
+      function openModal(button) {
+        currentRow = button.closest("tr");
+        const cells = currentRow.cells;
+
+        const id = cells[0].innerText;
+        const cost = parseNumber(cells[2].innerText);
+        const sell = parseNumber(cells[3].innerText);
+        const margin = parseFloat(cells[4].innerText);
+
+        document.getElementById("prodId").value = id;
+        document.getElementById("costPrice").value = cost;
+        document.getElementById("sellPrice").value = sell;
+        document.getElementById("newMargin").value = margin;
+
+        document.getElementById("editModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("editModal").style.display = "none";
+      }
+
+      function updateMargin() {
+        const cost = parseFloat(document.getElementById("costPrice").value);
+        const sell = parseFloat(document.getElementById("sellPrice").value);
+        if (!cost || !sell) return;
+        const margin = ((sell - cost) / cost) * 100;
+        document.getElementById("newMargin").value = margin.toFixed(2);
+      }
+
+      function updatePrice() {
+        const cost = parseFloat(document.getElementById("costPrice").value);
+        const margin = parseFloat(document.getElementById("newMargin").value);
+        if (!cost || isNaN(margin)) return;
+        const sell = cost * (1 + margin / 100);
+        document.getElementById("sellPrice").value = sell.toFixed(0);
+      }
+
+      function saveModal() {
+        if (!currentRow) return;
+        const sell = parseFloat(document.getElementById("sellPrice").value);
+        const margin = parseFloat(document.getElementById("newMargin").value);
+
+        currentRow.cells[3].innerHTML = "₫" + sell.toLocaleString("vi-VN");
+        currentRow.cells[4].innerHTML = margin.toFixed(2) + "%";
+
+        currentRow.style.transition = "background 0.6s";
+        currentRow.style.background = "#fff3cd";
+        setTimeout(() => (currentRow.style.background = ""), 800);
+
+        closeModal();
+        alert("Đã cập nhật giá và lợi nhuận thành công!");
+      }
+
+      // click ra ngoài để tắt modal
+      window.onclick = function (e) {
+        const modal = document.getElementById("editModal");
+        if (e.target === modal) closeModal();
+      };
+    </script>
+  </body>
+</html>

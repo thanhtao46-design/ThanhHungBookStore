@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chỉnh sửa sản phẩm</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Slim Select -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/slim-select@2.8.1/dist/slimselect.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/slim-select@2.8.1/dist/slimselect.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÍ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="product-two-col container">
+      <aside class="image-panel">
+        <div class="image-box">
+          <img src="../img/sodod.jpg" alt="Book cover preview" />
+        </div>
+        <div class="uploader">
+          <label class="file-label">Cập nhật ảnh bìa</label>
+          <input type="file" accept="image/*" />
+          <p class="hint">Chọn ảnh (JPG/PNG)</p>
+        </div>
+      </aside>
+
+      <div class="right-col">
+        <div class="form">
+          <h2>Chỉnh sửa sản phẩm</h2>
+
+          <p class="label">Mã sản phẩm</p>
+          <div class="row"><input id="product-id" value="P001" readonly /></div>
+
+          <p class="label">Tên sách</p>
+          <div class="row"><input id="product-name" value="Arya bàn bên" /></div>
+
+          <p class="label">Thể loại</p>
+          <div class="row">
+            <select id="category">
+              <option>Tiểu thuyết</option>
+              <option>Khoa học</option>
+              <option>Lịch sử</option>
+              <option>Tâm lý</option>
+              <option>Giáo dục</option>
+              <option>Tài liệu</option>
+              <option>Tham khảo</option>
+              <option>Hướng dẫn</option>
+              <option>Manga</option>
+              <option>Light Novel</option>
+            </select>
+          </div>
+
+          <p class="label">Tác giả</p>
+          <div class="row"><input id="author" value="Vũ Trọng Phụng" /></div>
+
+          <p class="label">Năm xuất bản</p>
+          <div class="row"><input id="year" value="1944" /></div>
+
+          <p class="label">Nhà xuất bản</p>
+          <div class="row">
+            <select id="publisher">
+              <option value="">Chọn hoặc nhập nhà xuất bản</option>
+              <option selected>NXB Trẻ</option>
+              <option>NXB Kim Đồng</option>
+              <option>NXB Văn Học</option>
+              <option>NXB Giáo Dục</option>
+              <option>NXB Phụ Nữ</option>
+              <option>NXB Tổng Hợp TP.HCM</option>
+            </select>
+          </div>
+
+          <p class="label">Độ tuổi phù hợp</p>
+          <div class="row">
+            <select id="age">
+              <option>6+</option>
+              <option>8+</option>
+              <option>10+</option>
+              <option>12+</option>
+              <option>14+</option>
+              <option selected>16+</option>
+              <option>18+</option>
+            </select>
+          </div>
+
+          <p class="label">Quốc gia</p>
+          <div class="row">
+            <select id="country">
+              <option value="">Chọn hoặc nhập quốc gia</option>
+              <option selected>Việt Nam</option>
+              <option>Nhật Bản</option>
+              <option>Hàn Quốc</option>
+              <option>Hoa Kỳ</option>
+              <option>Anh</option>
+              <option>Pháp</option>
+              <option>Trung Quốc</option>
+              <option>Đức</option>
+              <option>Ý</option>
+            </select>
+          </div>
+
+          <p class="label">Mô tả</p>
+          <div class="row">
+            <textarea id="description">
+Một tác phẩm kinh điển của văn học Việt Nam, phản ánh xã hội thành thị những năm 1930 với giọng văn châm biếm sắc bén.
+            </textarea>
+          </div>
+
+          <div style="margin-top: 16px">
+            <button
+              class="btn"
+              onclick="alert('Sản phẩm đã được cập nhật'); location.href='products.html'"
+            >
+              Lưu thay đổi
+            </button>
+            <button
+              class="btn ghost"
+              style="margin-left: 8px"
+              onclick="location.href='products.html'"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new SlimSelect({
+          select: "#publisher",
+          placeholder: "Chọn hoặc nhập nhà xuất bản",
+          searchPlaceholder: "Tìm kiếm...",
+        });
+
+        new SlimSelect({
+          select: "#country",
+          placeholder: "Chọn hoặc nhập quốc gia",
+          searchPlaceholder: "Tìm kiếm...",
+        });
+      });
+    </script>
+  </body>
+</html>

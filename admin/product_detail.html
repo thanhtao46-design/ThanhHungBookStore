@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xem sản phẩm</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÍ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="product-two-col container">
+      <!-- Cột ảnh -->
+      <aside class="image-panel">
+        <div class="image-box">
+          <img src="../img/sodod.jpg" alt="Book cover preview" />
+        </div>
+        <p class="hint">
+          Ảnh bìa minh hoạ (có thể thay bằng ảnh thật của sách).
+        </p>
+      </aside>
+
+      <!-- Cột thông tin -->
+      <div class="right-col">
+        <div class="form">
+          <h2>Thông tin sản phẩm</h2>
+
+          <p class="label">Mã sản phẩm</p>
+          <div class="row">
+            <input value="P001" readonly />
+          </div>
+
+          <p class="label">Tên sách</p>
+          <div class="row">
+            <input value="Arya bàn bên" readonly />
+          </div>
+
+          <p class="label">Thể loại</p>
+          <div class="row">
+            <input value="Tiểu thuyết" readonly />
+          </div>
+
+          <p class="label">Tác giả</p>
+          <div class="row">
+            <input value="Vũ Trọng Phụng" readonly />
+          </div>
+
+          <p class="label">Năm xuất bản</p>
+          <div class="row">
+            <input value="1944" readonly />
+          </div>
+
+          <p class="label">Nhà xuất bản</p>
+          <div class="row">
+            <input value="NXB Trẻ" readonly />
+          </div>
+
+          <p class="label">Độ tuổi phù hợp</p>
+          <div class="row">
+            <input value="16+" readonly />
+          </div>
+
+          <p class="label">Quốc gia</p>
+          <div class="row">
+            <input value="Việt Nam" readonly />
+          </div>
+
+          <p class="label">Mô tả</p>
+          <div class="row">
+            <textarea readonly>
+Một tác phẩm kinh điển của văn học Việt Nam, phản ánh xã hội thành thị những năm 1930 với giọng văn châm biếm sắc bén.
+            </textarea>
+          </div>
+
+          <div style="margin-top: 16px">
+            <button class="btn" onclick="location.href='products.html'">
+              ← Quay lại
+            </button>
+
+            <button
+              class="btn"
+              style="background: #007bff; margin-left: 10px"
+              onclick="location.href='edit_product.html'"
+            >
+              Chỉnh sửa
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

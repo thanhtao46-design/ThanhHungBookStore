@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – macOS Style</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="macOS.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: #F5F5F7;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(0,0,0,0.08);
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidebar .title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .side-link {
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      color: #1C1C1E;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .side-link:hover {
+      background: rgba(0,0,0,0.07);
+      transform: translateX(3px);
+    }
+
+    .side-link.active {
+      background: #007AFF;
+      color: white;
+    }
+
+    /* MAIN PANEL */
+    .main {
+      padding: 28px;
+      overflow-y: auto;
+    }
+
+    .heading {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1C1C1E;
+    }
+
+    /* Cards kiểu macOS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: #FFFFFF;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 13px;
+      color: #6E6E73;
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+      gap: 18px;
+    }
+
+    .feature-item {
+      background: #FFFFFF;
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 14px;
+      transition: 0.25s;
+      text-decoration: none;
+      color: #1C1C1E;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+    }
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(0,122,255,0.12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #007AFF;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="title">macOS Admin</div>
+
+    <a class="side-link active" href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a class="side-link" href="products.html"><i class="fa-solid fa-book"></i> Sách</a>
+    <a class="side-link" href="customer.html"><i class="fa-solid fa-users"></i> Khách hàng</a>
+    <a class="side-link" href="orders.html"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</a>
+    <a class="side-link" href="stock.html"><i class="fa-solid fa-warehouse"></i> Tồn kho</a>
+    <a class="side-link" href="price.html"><i class="fa-solid fa-tags"></i> Giá</a>
+    <a class="side-link" href="import.html"><i class="fa-solid fa-file-circle-plus"></i> Nhập hàng</a>
+  </aside>
+
+  <!-- MAIN PANEL -->
+  <main class="main">
+
+    <div class="heading">Tổng quan (macOS theme)</div>
+
+    <!-- 3 stats -->
+    <section class="cards">
+      <div class="card">
+        <h3>24 đơn hôm nay</h3>
+        <p>Tăng 12% so với hôm qua</p>
+      </div>
+
+      <div class="card">
+        <h3>7 sách sắp hết</h3>
+        <p>Cần nhập thêm</p>
+      </div>
+
+      <div class="card">
+        <h3>18 khách mới</h3>
+        <p>Tuần này</p>
+      </div>
+    </section>
+
+    <!-- Feature section -->
+    <h2 style="margin-bottom: 12px">Chức năng</h2>
+
+    <section class="feature-grid">
+
+      <a href="products.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-book"></i></div>
+        <div>
+          <h3>Sách</h3>
+          <p>Quản lý đầu sách & thông tin</p>
+        </div>
+      </a>
+
+      <a href="customer.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-users"></i></div>
+        <div>
+          <h3>Khách hàng</h3>
+          <p>Thông tin – phân loại – Lịch sử</p>
+        </div>
+      </a>
+
+      <a href="orders.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-cart-shopping"></i></div>
+        <div>
+          <h3>Đơn hàng</h3>
+          <p>Theo dõi & xử lý đơn</p>
+        </div>
+      </a>
+
+      <a href="stock.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-warehouse"></i></div>
+        <div>
+          <h3>Tồn kho</h3>
+          <p>Số lượng còn – trạng thái</p>
+        </div>
+      </a>
+
+      <a href="price.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-tags"></i></div>
+        <div>
+          <h3>Bảng giá</h3>
+          <p>Giảm giá – Combo – Khuyến mãi</p>
+        </div>
+      </a>
+
+      <a href="import.html" class="feature-item">
+        <div class="icon-box"><i class="fa-solid fa-file-circle-plus"></i></div>
+        <div>
+          <h3>Nhập hàng</h3>
+          <p>Phiếu nhập từ nhà cung cấp</p>
+        </div>
+      </a>
+
+    </section>
+  </main>
+
+</div>
+
+</body>
+</html>

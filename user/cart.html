@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="../css/user.css" />
+    <style>
+      /* ✅ Căn phải các cột giá tiền trong giỏ hàng */
+      .table th:nth-child(2),
+      .table td:nth-child(2),
+      .table th:nth-child(4),
+      .table td:nth-child(4) {
+        text-align: right;
+      }
+
+      /* ✅ Căn phải phần tổng tiền dưới cùng */
+      #cart-summary {
+        justify-content: flex-end;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="home_loggedin.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="home_loggedin.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="home_loggedin.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="home_loggedin.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="home_loggedin.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="search.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Thanh Cao ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="location='userinfo.html'">
+                Chi tiết
+              </button>
+              <button class="btn btn--light" onclick="location='../index.html'">
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+          <button id="cart-btn" class="dropbtn" onclick="location='cart.html'">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <h2>Giỏ hàng của bạn</h2>
+        <table class="table" id="cart-table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Tổng</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cart-item">
+              <td>
+                <div
+                  class="card"
+                  style="
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    box-shadow: none;
+                    border: none;
+                  "
+                >
+                  <img
+                    src="../img/aryabanben.jpg"
+                    alt="Arya bàn bên"
+                    style="
+                      width: 80px;
+                      height: 110px;
+                      object-fit: cover;
+                      border-radius: 8px;
+                    "
+                  />
+                  <h3>Arya bàn bên</h3>
+                </div>
+              </td>
+              <td data-price="110000">₫110,000</td>
+              <td>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty(this, -1)">
+                    −
+                  </button>
+                  <input type="number" min="1" value="1" readonly />
+                  <button class="qty-btn" onclick="changeQty(this, 1)">
+                    +
+                  </button>
+                </div>
+              </td>
+              <td class="total"><span>₫110,000</span></td>
+              <td>
+                <button class="btn btn--ghost" onclick="del(this)">Xóa</button>
+              </td>
+            </tr>
+            <tr class="cart-item">
+              <td>
+                <div
+                  class="card"
+                  style="
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    box-shadow: none;
+                    border: none;
+                  "
+                >
+                  <img
+                    src="../img/thiensu.jpg"
+                    alt="Thiên sứ bàn bên"
+                    style="
+                      width: 80px;
+                      height: 110px;
+                      object-fit: cover;
+                      border-radius: 8px;
+                    "
+                  />
+                  <h3>Thiên sứ bàn bên</h3>
+                </div>
+              </td>
+              <td data-price="115000">₫115,000</td>
+              <td>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeQty(this, -1)">
+                    −
+                  </button>
+                  <input type="number" min="1" value="1" readonly />
+                  <button class="qty-btn" onclick="changeQty(this, 1)">
+                    +
+                  </button>
+                </div>
+              </td>
+              <td class="total"><span>₫115,000</span></td>
+              <td>
+                <button class="btn btn--ghost" onclick="del(this)">Xóa</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Hiển thị tổng tiền -->
+        <div
+          id="cart-summary"
+          style="
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 16px;
+            gap: 12px;
+            font-size: 36px;
+            font-weight: 600;
+          "
+        >
+          <span>Tổng tiền: </span>
+          <span style="color: var(--accent-2)">₫225,000</span>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 12px;
+          "
+        >
+          <a class="btn btn--ghost" href="shop1.html">Tiếp tục mua sắm</a>
+          <a class="btn btn--ghost" href="emptycart.html">Xóa tất cả</a>
+          <a class="btn btn--primary" href="checkout.html">Thanh toán</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function changeQty(btn, delta) {
+        const input = btn.parentElement.querySelector("input");
+        let value = parseInt(input.value) + delta;
+        if (value < 1) value = 1;
+        input.value = value;
+      }
+
+      function del(button) {
+        const row = button.closest("tr");
+        row.remove();
+      }
+    </script>
+  </body>
+</html>

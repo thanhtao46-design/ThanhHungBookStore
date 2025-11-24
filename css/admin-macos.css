@@ -1,0 +1,121 @@
+/* ===== macOS ADMIN THEME ===== */
+
+/* Nền kiểu mờ trong suốt macOS */
+body {
+    background: url('../img/macos-bg.jpg') center/cover no-repeat fixed;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+/* Khung card kiểu glass */
+.macos-card {
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 18px;
+    padding: 18px 22px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+.macos-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* Sidebar kiểu macOS Control Center */
+.macos-sidebar {
+    width: 240px;
+    height: 100vh;
+    background: rgba(255,255,255,0.32);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 0 18px 18px 0;
+    padding: 20px 18px;
+    box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+}
+
+/* Link bên sidebar */
+.macos-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    color: #1c1c1e;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.macos-link:hover {
+    background: rgba(255,255,255,0.6);
+    transform: translateX(3px);
+}
+
+.macos-link.active {
+    background: rgba(0,122,255,0.18);
+    color: #007aff;
+    font-weight: 600;
+}
+
+/* Nút macOS */
+.macos-btn {
+    background: linear-gradient(145deg,#ffffff,#e9e9e9);
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.macos-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Icon button */
+.macos-icon-btn {
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.macos-icon-btn:hover {
+    background: rgba(255,255,255,0.7);
+    transform: scale(1.12);
+}
+
+/* Bảng */
+.macos-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.macos-table tr {
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(22px);
+    border-radius: 12px;
+}
+
+.macos-table td, .macos-table th {
+    padding: 14px 18px;
+}
+
+/* Header */
+.macos-header {
+    background: rgba(255,255,255,0.32);
+    backdrop-filter: blur(30px);
+    padding: 14px 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}

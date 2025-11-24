@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Thành Hưng BookStore</title>
+    <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      /* CSS-only Slider */
+      .slider {
+        overflow: hidden;
+        width: 100%;
+        max-width: 800px;
+        margin: 22px auto;
+        position: relative;
+        border-radius: 12px;
+      }
+      .slides {
+        display: flex;
+        width: 600%; /* 6 images */
+        animation: slideAnimation 24s infinite;
+      }
+      .slide {
+        width: 16.66%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+      }
+      @keyframes slideAnimation {
+        0% { transform: translateX(0); }
+        16% { transform: translateX(0); }
+        20% { transform: translateX(-16.66%); }
+        36% { transform: translateX(-16.66%); }
+        40% { transform: translateX(-33.33%); }
+        56% { transform: translateX(-33.33%); }
+        60% { transform: translateX(-50%); }
+        76% { transform: translateX(-50%); }
+        80% { transform: translateX(-66.66%); }
+        96% { transform: translateX(-66.66%); }
+        100% { transform: translateX(-83.33%); }
+      }
+      
+      /* Icon Button Styles */
+      .icon-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 8px;
+        transition: color 0.2s;
+      }
+      .icon-btn:hover {
+        color: var(--accent);
+      }
+      
+      .header-center {
+        gap: 15px;
+      }
+      
+      /* Tooltip for icons */
+      .icon-tooltip {
+        position: relative;
+      }
+      .icon-tooltip:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="icon-btn icon-tooltip" data-tooltip="Trang chủ">
+            <i class="fa-solid fa-house"></i>
+          </a>
+          <div class="dropdown">
+            <button class="icon-btn icon-tooltip" data-tooltip="Thể loại">
+              <i class="fa-solid fa-list"></i>
+            </button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="shop2.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="shop2.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="shop2.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="shop2.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="shop2.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="icon-btn icon-tooltip" href="search.html" data-tooltip="Tìm kiếm">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="icon-btn icon-tooltip" data-tooltip="Thanh Cao">
+              <i class="fa-solid fa-user-check"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="userinfo.html" class="btn btn--light">
+                <i class="fa-solid fa-circle-info"></i> Chi tiết
+              </a>
+              <a href="../index.html" class="btn btn--light">
+                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+              </a>
+            </div>
+          </div>
+          <a href="cart.html" class="icon-btn icon-tooltip" data-tooltip="Giỏ hàng">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="slider">
+      <div class="slides">
+        <img class="slide" src="../img/banner.jpg" alt="Banner 1" />
+        <img class="slide" src="../img/banner2.jpg" alt="Banner 2" />
+        <img class="slide" src="../img/banner3.jpg" alt="Banner 3" />
+        <img class="slide" src="../img/banner4.jpg" alt="Banner 4" />
+        <img class="slide" src="../img/banner5.jpg" alt="Banner 5" />
+        <img class="slide" src="../img/banner6.jpg" alt="Banner 6" />
+      </div>
+    </div>
+    <main class="container">
+      <div class="grid">
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/aryabanben.jpg" />
+          <h3>Arya bàn bên</h3>
+          <div class="price">₫110,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/thiensu.jpg" />
+          <h3>Nổi buồn chiến tranh</h3>
+          <div class="price">₫115,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/tuoitre.jpg" />
+          <h3>Tuổi trẻ đáng giá bao nhiêu</h3>
+          <div class="price">₫95,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/dacnhantam.jpg" />
+          <h3>Đắc nhân tâm</h3>
+          <div class="price">₫125,000</div>
+          <div class="rating">★☆☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/nhagiakim.jpg" />
+          <h3>Nhà giả kim</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/hatgiong.jpg" />
+          <h3>Hạt giống tâm hồn-16</h3>
+          <div class="price">₫85,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/thep.jpg" />
+          <h3>Thép đã tôi thế đấy</h3>
+          <div class="price">₫100,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/vutru.jpg" />
+          <h3>Vũ trụ trong vỏ hạt dẻ</h3>
+          <div class="price">₫140,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/demen.jpg" />
+          <h3>Dế mèn phiêu lưu ký</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★★★</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/harry.jpg" />
+          <h3>Harry Potter and the Sorcerer’s Stone</h3>
+          <div class="price">₫120,000</div>
+          <div class="rating">★★★★☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product1.html'">
+          <img src="../img/chipheo.jpg" />
+          <h3>Chí Phèo</h3>
+          <div class="price">₫70,000</div>
+          <div class="rating">★★☆☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card" onclick="location.href='product2.html'">
+          <img src="../img/tatden.jpg" />
+          <h3>Tắt đèn</h3>
+          <div class="price">₫80,000</div>
+          <div class="rating">★★★☆☆</div>
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn ghost icon-tooltip" data-tooltip="Thêm vào giỏ">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <a href="shop1.html"><i class="fa-solid fa-angles-left"></i></a>
+        <a href="shop1.html">1</a>
+        <a href="shop2.html">2</a>
+        <a href="shop1.html">3</a>
+        <a href="shop2.html">4</a>
+        <a href="shop1.html">5</a>
+        <a href="shop1.html"><i class="fa-solid fa-angles-right"></i></a>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="grid container">
+        <div>
+          <h3>Thành Hưng BookStore</h3>
+          <p>Nhà sách bán chạy số 1 Việt Nam</p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p>Email: support@greenbookstore.vn</p>
+          <p>Phone: +84 393 177 470</p>
+          <p>Address: 734 Nguyễn Chi Thanh, phường Minh Phụng, TPHCM</p>
+        </div>
+        <div>
+          <h3>Follow</h3>
+          <p>
+            <a href="https://www.facebook.com/TruongDaihocSaiGon.SGU"
+              ><i class="fa-brands fa-facebook"></i> Facebook</a
+            >
+            | <a href="https://www.instagram.com/sontungmtp/"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          text-align: center;
+          padding-top: 12px;
+          color: rgba(255, 255, 255, 0.8);
+        "
+      >
+        © 2025 Thành Hưng BookStore
+      </div>
+    </footer>
+  </body>
+</html>

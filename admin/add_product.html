@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm sản phẩm</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Slim Select -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/slim-select@2.8.1/dist/slimselect.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/slim-select@2.8.1/dist/slimselect.min.js"></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÍ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="product-two-col container">
+      <aside class="image-panel">
+        <div class="image-box">
+          <img src="../img/placeholder.jpg" alt="Book cover preview" />
+        </div>
+        <div class="uploader">
+          <label class="file-label">Tải ảnh bìa sách</label>
+          <input type="file" accept="image/*" />
+          <p class="hint">Chọn ảnh (JPG/PNG)</p>
+        </div>
+      </aside>
+
+      <div class="right-col">
+        <div class="form">
+          <h2>Thêm sản phẩm mới</h2>
+
+          <p class="label">Mã sản phẩm</p>
+          <div class="row">
+            <input id="product-id" placeholder="Nhập mã sản phẩm" />
+          </div>
+
+          <p class="label">Tên sách</p>
+          <div class="row">
+            <input id="product-name" placeholder="Nhập tên sách" />
+          </div>
+
+          <p class="label">Thể loại</p>
+          <div class="row">
+            <select id="category">
+              <option value="" disabled selected>Chọn thể loại</option>
+              <option>Tiểu thuyết</option>
+              <option>Khoa học</option>
+              <option>Lịch sử</option>
+              <option>Tâm lý</option>
+              <option>Giáo dục</option>
+              <option>Tài liệu</option>
+              <option>Tham khảo</option>
+              <option>Hướng dẫn</option>
+              <option>Manga</option>
+              <option>Light Novel</option>
+            </select>
+          </div>
+
+          <p class="label">Tác giả</p>
+          <div class="row">
+            <input id="author" placeholder="Nhập tên tác giả" />
+          </div>
+
+          <p class="label">Năm xuất bản</p>
+          <div class="row">
+            <input id="year" placeholder="Nhập năm xuất bản" />
+          </div>
+
+          <p class="label">Nhà xuất bản</p>
+          <div class="row">
+            <select id="publisher">
+              <option value="">Chọn hoặc nhập nhà xuất bản</option>
+              <option>NXB Trẻ</option>
+              <option>NXB Kim Đồng</option>
+              <option>NXB Văn Học</option>
+              <option>NXB Giáo Dục</option>
+              <option>NXB Phụ Nữ</option>
+              <option>NXB Tổng Hợp TP.HCM</option>
+            </select>
+          </div>
+
+          <p class="label">Độ tuổi phù hợp</p>
+          <div class="row">
+            <select id="age">
+              <option value="" disabled selected>Chọn độ tuổi</option>
+              <option>6+</option>
+              <option>8+</option>
+              <option>10+</option>
+              <option>12+</option>
+              <option>14+</option>
+              <option>16+</option>
+              <option>18+</option>
+            </select>
+          </div>
+
+          <p class="label">Quốc gia</p>
+          <div class="row">
+            <select id="country">
+              <option value="">Chọn hoặc nhập quốc gia</option>
+              <option>Việt Nam</option>
+              <option>Nhật Bản</option>
+              <option>Hàn Quốc</option>
+              <option>Hoa Kỳ</option>
+              <option>Anh</option>
+              <option>Pháp</option>
+              <option>Trung Quốc</option>
+              <option>Đức</option>
+              <option>Ý</option>
+            </select>
+          </div>
+
+          <p class="label">Mô tả</p>
+          <div class="row">
+            <textarea
+              id="description"
+              placeholder="Nhập mô tả ngắn..."
+            ></textarea>
+          </div>
+
+          <div style="margin-top: 16px">
+            <button
+              class="btn"
+              onclick="alert('Đã thêm sản phẩm vào kho'); location.href='products.html'"
+            >
+              Thêm vào kho
+            </button>
+            <button
+              class="btn ghost"
+              style="margin-left: 8px"
+              onclick="location.href='products.html'"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new SlimSelect({
+          select: "#publisher",
+          placeholder: "Chọn hoặc nhập nhà xuất bản",
+          searchPlaceholder: "Tìm kiếm...",
+        });
+
+        new SlimSelect({
+          select: "#country",
+          placeholder: "Chọn hoặc nhập quốc gia",
+          searchPlaceholder: "Tìm kiếm...",
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ControlHub – Đăng nhập quản trị</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="macOS.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #eef2ff, #dbeafe);
+    }
+
+    .login-wrapper {
+      max-width: 950px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    }
+
+    .login-wrapper h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      color: #1e3a8a;
+    }
+
+    .row input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .row input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.35);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59,130,246,0.45);
+    }
+
+    .preview-box img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.13);
+    }
+
+    header.header h1 {
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="inner">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo" />
+        <h1>BẢNG ĐIỀU KHIỂN CONTROLHUB</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="login-wrapper">
+    <div>
+      <h2>Đăng nhập hệ thống</h2>
+      <div class="row"><input placeholder="Tên đăng nhập hoặc email" /></div>
+      <div class="row"><input type="password" placeholder="Mật khẩu quản trị viên" /></div>
+      <button class="btn-login" onclick="location.href='admin/dashboard.html'">
+        <i class="fa-solid fa-right-to-bracket"></i> Vào bảng điều khiển
+      </button>
+    </div>
+
+    <div class="preview-box">
+      <img src="img/logo.png" alt="Hình minh họa">
+    </div>
+  </main>
+</body>
+</html>

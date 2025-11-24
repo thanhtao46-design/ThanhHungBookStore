@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nổi Buồn Chiến Tranh</title>
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='home_loggedin.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="home_loggedin.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="home_loggedin.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1.html">Manga</a>
+              <a class="btn--light" href="home_loggedin.html">Lịch sử</a>
+              <a class="btn--light" href="shop1.html">Tâm lý học</a>
+              <a class="btn--light" href="home_loggedin.html">Giáo dục</a>
+              <a class="btn--light" href="shop1.html">Tài liệu</a>
+              <a class="btn--light" href="home_loggedin.html">Tham khảo</a>
+              <a class="btn--light" href="shop1.html">Hướng dẫn</a>
+              <a class="btn--light" href="home_loggedin.html">Light Novel</a>
+              <a class="btn--light" href="shop1.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="search.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Thanh Cao ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="location='userinfo.html'">
+                Chi tiết
+              </button>
+              <button class="btn btn--light" onclick="location='../index.html'">
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+          <button id="cart-btn" class="dropbtn" onclick="location='cart.html'">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="detail">
+        <img src="../img/thiensu.jpg" />
+        <div class="info">
+          <h2>Thiên sứ nhà bên</h2>
+          <p><strong>Mã sản phẩm:</strong> P002</p>
+          <p><strong>Tác giả:</strong> Saekisan Hanekoto</p>
+          <p><strong>Năm xuất bản:</strong> 2020</p>
+          <p><strong>Nhà xuất bản:</strong> NXB Kim Đồng</p>
+          <p><strong>Độ tuổi phù hợp:</strong> 16+</p>
+          <p><strong>Xuất xứ:</strong> Việt Nam</p>
+          <p><strong>Thể loại:</strong> Tiểu thuyết</p>
+          <p>
+            <strong>Mô tả:</strong> * THIÊN SỨ NHÀ BÊN được xem là cú hit của dòng Light Novel rom-com tại thị trường Nhật Bản, với nội dung hài hước - lãng mạn rất được yêu thích. Tác phẩm nằm top 10 Kono Light novel ga Sugoi năm 2021, đã bán ra hơn 400.000 bản chỉ với 4 tập truyện riêng tại Nhật Bản.
+          </p>
+          <p style="margin-top: 8px; font-size: 18px">
+            <strong>Giá:</strong>
+            <span style="font-size: 22px; font-weight: bold; color: #20c030">
+              ₫85,000
+            </span>
+          </p>
+          <div style="margin-top: 12px; display: flex; gap: 8px">
+            <button class="btn ghost" onclick="alert('Đã thêm vào giỏ!')">
+              Thêm vào giỏ
+            </button>
+            <button class="btn btn-light" onclick="addToWishlist()">❤️ Yêu thích</button>
+            <button class="btn" onclick="location.href='cart.html'">
+              Mua ngay
+            </button>
+          </div>
+
+          <hr style="margin: 16px 0" />
+          <h3>Đánh giá</h3>
+          <div id="s1" style="font-size: 24px; cursor: pointer">
+            <span onclick="set(1)">☆</span><span onclick="set(2)">☆</span
+            ><span onclick="set(3)">☆</span><span onclick="set(4)">☆</span
+            ><span onclick="set(5)">☆</span>
+          </div>
+          <div>
+            <textarea
+              class="comment"
+              placeholder="Viết đánh giá của bạn..."
+            ></textarea>
+          </div>
+          <div style="margin-top: 8px">
+            <button class="btn" onclick="submit()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      /* Rating star */
+      let r = 0;
+      function set(n) {
+        r = n;
+        const sp = document.querySelectorAll("#s1 span");
+        for (let i = 0; i < 5; i++) {
+          sp[i].textContent = i < n ? "★" : "☆";
+        }
+      }
+      function submit() {
+        alert("Cảm ơn bạn đã gửi đánh giá!");
+      }
+
+      let cartCount = 0;
+      const cartCountSpan = document.getElementById("cart-count");
+
+      // Lấy tất cả nút "Thêm vào giỏ"
+      const addToCartButtons = document.querySelectorAll(".btn.ghost");
+
+      // Gắn sự kiện click 1 lần duy nhất
+      addToCartButtons.forEach((button) => {
+        // Loại bỏ sự kiện cũ (nếu có)
+        button.onclick = null;
+
+        // Gắn sự kiện mới
+        button.addEventListener("click", () => {
+          cartCount++;
+          cartCountSpan.textContent = cartCount;
+          alert("Đã thêm vào giỏ hàng"); // Chỉ hiện 1 lần
+        });
+      });
+      yb;
+    </script>
+    <script>
+    function addToWishlist() {
+        alert("Đã thêm vào danh sách yêu thích!");
+    }
+    </script>
+
+  </body>
+</html>

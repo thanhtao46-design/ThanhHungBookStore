@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nổi Buồn Chiến Tranh</title>
+    <link rel="stylesheet" href="../css/user.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <!-- Left -->
+        <div class="header-left">
+          <div class="logo" onclick="location.href='../index.html'">
+            <img src="../img/logo.png" alt="Thành Hưng logo" />
+            <h1>Thành Hưng BookStore</h1>
+          </div>
+        </div>
+
+        <!-- Center -->
+        <div class="header-center">
+          <a href="../index.html" class="dropbtn">Trang chủ</a>
+          <div class="dropdown">
+            <button class="dropbtn">Thể loại ▼</button>
+            <div class="dropdown-content">
+              <a class="btn--light" href="../index.html">Tiểu thuyết</a>
+              <a class="btn--light" href="shop1guest.html">Manga</a>
+              <a class="btn--light" href="../index.html">Lịch sử</a>
+              <a class="btn--light" href="shop1guest.html">Tâm lý học</a>
+              <a class="btn--light" href="../index.html">Giáo dục</a>
+              <a class="btn--light" href="shop1guest.html">Tài liệu</a>
+              <a class="btn--light" href="../index.html">Tham khảo</a>
+              <a class="btn--light" href="shop1guest.html">Hướng dẫn</a>
+              <a class="btn--light" href="../index.html">Light Novel</a>
+              <a class="btn--light" href="shop1guest.html">Khoa học</a>
+            </div>
+          </div>
+
+          <div class="search">
+            <input placeholder="Tìm kiếm sách..." />
+            <a class="btn" href="searchguest.html">Tìm kiếm</a>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="header-right">
+          <div class="dropdown">
+            <button class="dropbtn">Tài khoản ▼</button>
+            <div class="dropdown-content">
+              <button class="btn btn--light" onclick="openLoginPopup()">
+                Đăng nhập
+              </button>
+              <button class="btn btn--light" onclick="openRegisterPopup()">
+                Đăng ký
+              </button>
+            </div>
+          </div>
+          <button class="dropbtn" onclick="location='emptycartguest.html'">
+            🛒
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="detail">
+        <img src="../img/thiensu.jpg" />
+        <div class="info">
+          <h2>Thiên sứ nhà bên</h2>
+          <p><strong>Mã sản phẩm:</strong> P002</p>
+          <p><strong>Tác giả:</strong> Saekisan Hanekoto</p>
+          <p><strong>Năm xuất bản:</strong> 2020</p>
+          <p><strong>Nhà xuất bản:</strong> NXB Kim Đồng</p>
+          <p><strong>Độ tuổi phù hợp:</strong> 16+</p>
+          <p><strong>Xuất xứ:</strong> Việt Nam</p>
+          <p><strong>Thể loại:</strong> Tiểu thuyết</p>
+          <p>
+            <strong>Mô tả:</strong> * THIÊN SỨ NHÀ BÊN được xem là cú hit của dòng Light Novel rom-com tại thị trường Nhật Bản, với nội dung hài hước - lãng mạn rất được yêu thích. Tác phẩm nằm top 10 Kono Light novel ga Sugoi năm 2021, đã bán ra hơn 400.000 bản chỉ với 4 tập truyện riêng tại Nhật Bản.
+          </p>
+          <p style="margin-top: 8px; font-size: 18px">
+            <strong>Giá:</strong>
+            <span style="font-size: 22px; font-weight: bold; color: #20c030">
+              ₫115,000
+            </span>
+          </p>
+
+          <div style="margin-top: 12px; display: flex; gap: 8px">
+            <button
+              class="btn"
+              onclick="alert('Đăng nhập hoặc Đăng kí để tiếp tục!')"
+            >
+              Thêm vào giỏ
+            </button>
+            <button
+              class="btn ghost"
+              onclick="alert('Đăng nhập hoặc Đăng kí để tiếp tục!')"
+            >
+              Mua ngay
+            </button>
+          </div>
+
+          <hr style="margin: 16px 0" />
+          <h3>Đánh giá</h3>
+          <div id="s1" style="font-size: 24px; cursor: pointer">
+            <span onclick="set(1)">☆</span><span onclick="set(2)">☆</span
+            ><span onclick="set(3)">☆</span><span onclick="set(4)">☆</span
+            ><span onclick="set(5)">☆</span>
+          </div>
+          <div>
+            <textarea
+              class="comment"
+              placeholder="Viết đánh giá của bạn..."
+            ></textarea>
+          </div>
+          <div style="margin-top: 8px">
+            <button class="btn" onclick="submit()">Gửi</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- POPUP ĐĂNG NHẬP -->
+    <div id="login-popup" class="popup">
+      <div class="popup-box">
+        <span class="close-btn" onclick="closeLoginPopup()">×</span>
+        <h2>Đăng nhập tài khoản</h2>
+        <form class="popup-form">
+          <input type="text" placeholder="Tên đăng nhập" />
+          <input type="password" placeholder="Mật khẩu" />
+          <button
+            type="button"
+            class="btn btn--primary"
+            style="width: 100%"
+            onclick="location.href='home_loggedin.html'"
+          >
+            Đăng nhập
+          </button>
+          <p style="text-align: center; margin-top: 10px; font-size: 14px">
+            Chưa có tài khoản?
+            <a href="#" onclick="switchToRegister()">Đăng ký ngay</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- POPUP ĐĂNG KÝ -->
+    <div id="register-popup" class="popup">
+      <div class="popup-box">
+        <span class="close-btn" onclick="closeRegisterPopup()">×</span>
+        <h2>Tạo tài khoản mới</h2>
+        <form class="popup-form">
+          <input type="text" placeholder="Tên đăng nhập" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Mật khẩu" />
+          <button
+            type="button"
+            class="btn btn--primary"
+            style="width: 100%"
+            onclick="location.href='home_loggedin.html'"
+          >
+            Đăng ký
+          </button>
+          <p style="text-align: center; margin-top: 10px; font-size: 14px">
+            Đã có tài khoản?
+            <a href="#" onclick="switchToLogin()">Đăng nhập</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script>
+      function openLoginPopup() {
+        document.getElementById("login-popup").style.display = "flex";
+      }
+      function closeLoginPopup() {
+        document.getElementById("login-popup").style.display = "none";
+      }
+      function openRegisterPopup() {
+        document.getElementById("register-popup").style.display = "flex";
+      }
+      function closeRegisterPopup() {
+        document.getElementById("register-popup").style.display = "none";
+      }
+
+      /* Đóng khi click ra ngoài */
+      window.addEventListener("click", function (e) {
+        const login = document.getElementById("login-popup");
+        const register = document.getElementById("register-popup");
+        if (e.target === login) closeLoginPopup();
+        if (e.target === register) closeRegisterPopup();
+      });
+
+      /* Chuyển qua lại giữa 2 popup */
+      function switchToRegister() {
+        closeLoginPopup();
+        setTimeout(openRegisterPopup, 200);
+      }
+      function switchToLogin() {
+        closeRegisterPopup();
+        setTimeout(openLoginPopup, 200);
+      }
+
+      /* Rating star */
+      let r = 0;
+      function set(n) {
+        r = n;
+        const sp = document.querySelectorAll("#s1 span");
+        for (let i = 0; i < 5; i++) {
+          sp[i].textContent = i < n ? "★" : "☆";
+        }
+      }
+      function submit() {
+        alert("Đăng nhập hoặc Đăng kí để tiếp tục!");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông tin khách hàng</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="logo" onclick="location.href='dashboard.html'">
+          <img src="../img/logo.png" />
+          <h1>QUẢN LÍ NHÀ SÁCH</h1>
+        </div>
+        <nav class="nav">
+          <a href="dashboard.html">Trang chủ</a>
+          <a
+            onclick="
+  if (document.referrer) {
+    window.history.back();
+  } else {
+    location.href = 'dashboard.html';
+  }
+"
+          >
+            ⬅️ Quay lại
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <h2>Thông tin chi tiết</h2>
+      <div class="form" style="display: flex; align-items: center; gap: 32px">
+        <img
+          src="../img/avatar.png"
+          style="
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+          "
+        />
+        <div>
+          <p>ID: C001</p>
+          <p>Họ: Tào</p>
+          <p>Tên:Gia Thành</p>
+          <p>Ngày sinh: 2001/12/09</p>
+          <p>Email: thanhtao@gmail.com</p>
+          <p>Số điện thoại: 0393 177 470</p>
+          <p>Địa chỉ: 734 Nguyễn Chí Thanh, Phường Minnh Phụng, TP. Hồ Chí Minh</p>
+        </div>
+      </div>
+      <h3>Lịch sử mua hàng</h3>
+      <table class="table">
+        <tr>
+          <th>Mã đơn hàng</th>
+          <th>Ngày mua</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>O001</td>
+          <td>2025-01-25</td>
+          <td><a class="btn" href="order_detail.html">Chi tiết</a></td>
+        </tr>
+        <tr>
+          <td>O002</td>
+          <td>2025-01-26</td>
+          <td><a class="btn" href="order_detail2.html">Chi tiết</a></td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>

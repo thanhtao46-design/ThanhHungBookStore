@@ -1,0 +1,1246 @@
+/* =====================================================
+   Green Bookstore — Modern Refresh (No JS required)
+   Drop-in override for your current HTML structure
+   Author: ChatGPT
+   ===================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
+
+/* ---------- Palette & Tokens ---------- */
+:root {
+  /* Greens */
+  --green-50: #effaf3;
+  --green-100: #e7f6ed;
+  --green-200: #d9efe2;
+  --green-300: #bfe6cf;
+  --green-400: #79d2a1;
+  --green-500: #2f8f4a; /* kept from old */
+  --green-600: #25753c;
+  --green-700: #1b5d31;
+  --green-800: #144a28;
+  --green-900: #0b3b18; /* kept from old */
+
+  --accent: #22c55e; /* CTA / highlights */
+  --accent-2: #16a34a;
+  --ink: var(--green-900);
+  --muted: #6b7b6b;
+
+  --bg-grad-1: #edf9ef;
+  --bg-grad-2: #eaf6ee;
+
+  --card: #ffffff;
+  --ring: rgba(34, 197, 94, 0.35);
+  --shadow: 0 10px 30px rgba(6, 24, 12, 0.12);
+  --shadow-lg: 0 20px 50px rgba(6, 24, 12, 0.16);
+  --radius: 14px;
+
+  --fs-100: 12px;
+  --fs-200: 14px;
+  --fs-300: 16px;
+  --fs-400: 18px;
+  --fs-500: 20px;
+  --fs-600: 24px;
+  --fs-700: 28px;
+  --fs-800: 36px;
+
+  --container: 1200px;
+  --gap: 18px;
+
+  /* Motion */
+  --dur-1: 0.15s;
+  --dur-2: 0.25s;
+  --easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial;
+  color: var(--ink);
+  background: linear-gradient(
+    180deg,
+    var(--bg-grad-1) 0%,
+    var(--bg-grad-2) 100%
+  );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px;
+}
+section {
+  padding-block: 24px;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+p {
+  margin: 0 0 12px;
+}
+a {
+  color: var(--green-700);
+  text-decoration: none;
+  transition: color var(--dur-1) var(--easing);
+}
+a:hover {
+  color: var(--green-800);
+  text-decoration: underline;
+}
+
+/* ---------- Header / Navbar (uses existing classes) ---------- */
+.header {
+  background: linear-gradient(120deg, #111827, #1d4ed8, #7c3aed);
+  color: #fff;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow);
+}
+
+@keyframes headerSlide {
+  from {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.header .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transform: translateZ(0);
+}
+.logo img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform var(--dur-2) var(--easing),
+    box-shadow var(--dur-2) var(--easing);
+}
+.logo:hover img {
+  transform: scale(1.04) rotate(0.2deg);
+  box-shadow: var(--shadow);
+}
+.logo h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: transform var(--dur-1) var(--easing),
+    background var(--dur-1) var(--easing),
+    border-color var(--dur-1) var(--easing);
+}
+.nav a:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Search ---------- */
+.search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.search input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 240px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
+  transition: border-color var(--dur-1) var(--easing),
+    box-shadow var(--dur-1) var(--easing);
+}
+.search input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+.search button {
+  background: #fff;
+  color: var(--green-900);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform var(--dur-1) var(--easing),
+    filter var(--dur-1) var(--easing);
+}
+.search button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* ---------- Category pills ---------- */
+.category {
+  display: flex;
+  gap: 10px;
+  padding: 14px 0;
+  overflow: auto;
+  align-items: center;
+  scroll-snap-type: x mandatory;
+}
+.category a {
+  scroll-snap-align: start;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--green-700);
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: background var(--dur-1) var(--easing),
+    transform var(--dur-1) var(--easing),
+    border-color var(--dur-1) var(--easing),
+    box-shadow var(--dur-1) var(--easing);
+}
+.category a:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--accent) 22%, white 0%);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Slider (structure-compatible) ---------- */
+.slider {
+  max-width: 900px;
+  margin: 22px auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s var(--easing);
+}
+.slide {
+  min-width: 100%;
+  height: 360px;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.6s var(--easing), filter 0.6s var(--easing);
+  filter: saturate(1.02) contrast(1.02);
+}
+.slider:hover .slide {
+  transform: scale(1.02);
+}
+.slider::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 72px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.25));
+}
+
+/* ---------- Filters ---------- */
+.filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.filter select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e0efe4;
+  outline: none;
+  background: #fff;
+  transition: border-color var(--dur-1) var(--easing),
+    box-shadow var(--dur-1) var(--easing);
+}
+.filter select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* ---------- Product grid & cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap);
+}
+
+/* Appear on scroll (no JS: uses pure animation; animates once) */
+@keyframes fadeUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.card {
+  background: var(--card);
+  padding: 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ecf5ee;
+  transition: transform var(--dur-2) var(--easing),
+    box-shadow var(--dur-2) var(--easing),
+    border-color var(--dur-2) var(--easing), filter var(--dur-2) var(--easing);
+  animation: fadeUp 0.5s var(--easing) both;
+  will-change: transform;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #d8ebde;
+  filter: saturate(1.02);
+}
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform 0.6s var(--easing);
+}
+.card:hover img {
+  transform: scale(1.03);
+}
+.card h3 {
+  font-size: 17px;
+  color: var(--green-900);
+}
+.price {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+.rating {
+  color: #f59e0b;
+  font-size: 14px;
+}
+
+/* ---------- Detail & Info panel ---------- */
+.detail {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+.detail img {
+  width: 380px;
+  height: 540px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.info {
+  background: #fff;
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1;
+  border: 1px solid #ecf5ee;
+}
+
+/* ---------- Forms ---------- */
+.form {
+  background: #fff;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid #ecf5ee;
+}
+.form .row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  border: 1px solid #1ba340;
+  border-radius: 5px;
+  /* padding: 10px; */
+  background: #f7fbf8;
+}
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e0efe4;
+  outline: none;
+  background: #fff;
+  transition: border-color var(--dur-1) var(--easing),
+    box-shadow var(--dur-1) var(--easing);
+}
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  color: #f9fafb;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: var(--shadow);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--accent-2);
+  border: 2px solid var(--accent-2);
+}
+
+/* ---------- Tables ---------- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid #ecf5ee;
+}
+.table thead th {
+  background: var(--green-100);
+  color: var(--green-900);
+}
+.table th,
+.table td {
+  padding: 8px 6px; /* giảm padding để các cột gần nhau hơn */
+  border-bottom: 1px solid #f2f6f2;
+  text-align: left;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--green-900);
+  color: #fff;
+  padding: 32px 20px;
+  margin-top: 36px;
+  border-top: 4px solid var(--accent-2);
+}
+.footer .grid {
+  display: flex;
+  gap: 20px;
+  max-width: var(--container);
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.footer div {
+  flex: 1;
+  min-width: 220px;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity var(--dur-1) var(--easing);
+}
+.footer a:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+/* ---------- Helpers ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: var(--fs-100);
+  background: var(--green-200);
+  color: var(--green-800);
+}
+.kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: #eef5ef;
+  border: 1px solid #d8ebde;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 1024px) {
+  .logo img {
+    width: 64px;
+    height: 64px;
+  }
+}
+@media (max-width: 900px) {
+  .header .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .detail {
+    flex-direction: column;
+  }
+  .detail img {
+    width: 100%;
+    height: auto;
+  }
+  .search input {
+    width: 160px;
+  }
+}
+@media (max-width: 600px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+  .category {
+    gap: 8px;
+  }
+  .card img {
+    height: 220px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .header,
+  .footer,
+  .slider {
+    display: none !important;
+  }
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+}
+
+.acontainer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.agrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.acard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 190px;
+  background: #0f172a;
+  border-radius: 18px;
+  padding: 18px 20px;
+  color: #e5e7eb;
+  text-decoration: none;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.acard:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #38bdf8;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.75);
+}
+
+.acard .overlay {
+  padding: 0;
+  text-align: left;
+}
+
+.acard h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.acard p {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.acard:hover {
+  transform: translateY(-5px);
+  border-color: #3cc824;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.acard .overlay {
+  padding: 20px;
+  text-align: left;
+}
+
+.acard h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.acard p {
+  font-size: 0.95rem;
+  color: #555;
+  opacity: 0.9;
+}
+
+/* ===== Two-column product layout (image left, info right) ===== */
+.product-two-col {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .product-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+.image-panel {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e8e8e8);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow, 0 4px 20px rgba(0, 0, 0, 0.06));
+}
+.image-box {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--green-50, #f5f5f5);
+  border: 1px dashed var(--border, #d9d9d9);
+}
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.uploader {
+  margin-top: 14px;
+}
+.file-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.image-panel input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border, #e8e8e8);
+  border-radius: 10px;
+  background: #fff;
+}
+.hint {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-top: 8px;
+}
+
+/* Make existing form/card stretch nicely as the right column */
+.product-two-col > .right-col {
+  background: var(--surface, #fff);
+  border-radius: 16px;
+}
+
+.comment {
+  width: 100%;
+  height: 80px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.page-btn {
+  background-color: #fff; /* nền sáng */
+  color: var(--accent-2); /* chữ cùng tông chủ đạo */
+  border: 2px solid var(--accent-2);
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.page-btn:hover {
+  background-color: var(--accent-2);
+  color: #fff;
+}
+
+.page-btn.active {
+  background-color: var(--accent-2); /* nền tối */
+  color: #fff; /* chữ sáng */
+  border-color: var(--accent-2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* cart qty */
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 90px;
+}
+
+.qty-control input {
+  width: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: #fff;
+  font-size: 14px;
+}
+
+.qty-btn {
+  background: #f0f0f0;
+  border: none;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: #ddd;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.modal-content h3 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Filter & Search Layout */
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search-section input,
+.search-section select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ==========================
+   REVENUE DASHBOARD STYLES
+   Used for: revenue_day, week, month, range
+   ========================== */
+
+/* --- Filter buttons row --- */
+.revenue-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.revenue-filter .btn {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Active button (highlighted period) */
+.revenue-filter .btn.active {
+  background: #2d6cdf;
+  color: #fff;
+}
+
+/* --- Range selector box --- */
+.range-box {
+  display: none;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.range-box input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* --- Summary cards --- */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f9fafc;
+}
+
+.summary-card h3 {
+  margin-bottom: 6px;
+}
+
+.summary-card p {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/* Card color variants */
+.card-blue {
+  background: #eaf3ff;
+}
+.card-green {
+  background: #6ed889;
+}
+.card-yellow {
+  background: #fff8e6;
+}
+.card-purple {
+  background: #f7e8ff;
+}
+
+/* --- Table section --- */
+.table-section {
+  margin-top: 10px;
+}
+
+.table-section h3 {
+  margin-bottom: 10px;
+}
+
+/* --- Totals footer --- */
+.total-footer {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+/* ---------- LABEL (FACABA STYLE) ---------- */
+.label {
+  display: block;
+  font-weight: 600;
+  color: var(--green-900);
+  margin: 10px 0 6px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease;
+}
+
+.label::after {
+  content: ":";
+  margin-left: 2px;
+  color: var(--accent-2);
+}
+
+.label:hover {
+  color: var(--accent-2);
+}
+
+/* Làm mờ các ô dữ liệu, nhưng giữ nút hành động rõ ràng */
+tr.hidden-row td:not(:last-child) {
+  opacity: 0.4 !important;
+  transition: opacity 0.3s ease;
+}
+
+/* === Slim Select Custom Style - match form inputs === */
+.ss-main {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 15px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Khi bấm vào (focus) */
+.ss-main:focus-within {
+  border-color: #27b439 !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+/* Dropdown panel */
+.ss-content {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Ô tìm kiếm trong dropdown */
+.ss-search input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+/* Hover option */
+.ss-option:hover {
+  background-color: #f1f1f1;
+}
+
+/* Khi chọn rồi (selected item text) */
+.ss-single-selected {
+  color: #249749;
+  font-weight: 500;
+}
+
+/* ==== STATUS BADGE ==== */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  background: #6c757d; /* màu mặc định */
+  opacity: 1; /* NGĂN bị mờ */
+}
+
+/* Trạng thái cụ thể */
+.badge.moi {
+  background-color: #0d6efd; /* Xanh dương */
+}
+
+.badge.xuly {
+  background-color: #ffc107; /* Vàng xử lý */
+  color: #000;
+}
+
+.badge.dagiao {
+  background-color: #28a745; /* Xanh lá đã giao */
+}
+
+.badge.dahuy {
+  background-color: #dc3545; /* Đỏ đã hủy */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.search-bar .btn {
+  padding: 8px 16px;
+}
+
+.table-wrapper {
+  min-height: 480px;
+  margin-bottom: 20px;
+}
+
+/* Added for icons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+
+/* Override colors to Blue theme */
+:root {
+  --green-50: #eff6ff;
+  --green-100: #dbeafe;
+  --green-200: #bfdbfe;
+  --green-400: #60a5fa;
+  --green-500: #3b82f6;
+  --green-700: #1d4ed8;
+  --green-900: #1e3a8a;
+  --accent: #3b82f6;
+  --accent-2: #2563eb;
+}
+body {
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+/* Card admin mới – sáng, rõ, đẹp */
+.acard {
+  background: #ffffff !important;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: left;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  transition: 0.25s;
+}
+
+.acard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+  border-color: #3b82f6;
+}
+
+.acard h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.acard p {
+  font-size: 14px;
+  color: #475569 !important;
+}
+
+/* Làm sáng khu vực background admin */
+.acontainer {
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+}
+
+/* Header gọn, rõ */
+.header {
+  background: linear-gradient(120deg, #1e3a8a, #3b82f6);
+  padding: 12px 0;
+}
+.btn-icon {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border: none;
+    color: white;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn-icon.danger {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+/* --- Banner đẹp kiểu modern --- */
+.hero-banner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* --- Card sách kiểu MacOS --- */
+.book-card {
+    width: 260px;
+    padding: 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+    margin: 20px;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.book-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.book-card .title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.book-card .price {
+    font-size: 17px;
+    font-weight: bold;
+    color: #0057ff;
+    margin-top: 10px;
+}
+
+.book-card .buy-btn {
+    background: #0057ff;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.book-card .buy-btn:hover {
+    background: #003fcc;
+}
+
